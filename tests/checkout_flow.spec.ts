@@ -243,6 +243,17 @@ test.describe('Checkout Flow', () => {
         expect(page.url()).toContain('/checkout-step-two.html');
         const itemCount = await page.locator('.cart_quantity').count();
         expect(itemCount).toBe(2);
+
+        //Remove one item from the cart and verify the number of items in the cart
+        await page.goBack();
+        expect(page.url()).toContain('/checkout-step-one.html');
+        await page.goBack();
+        expect(page.url()).toContain('/cart.html');
+        await page.locator('[data-test="remove-' + removeButtonTestID + '"]').first().click();
+        const itemCountAfterRemove = await page.locator('.cart_quantity').count();
+        expect(itemCountAfterRemove).toBe(1);
+        expect(await page.locator('[data-test="inventory-item-name"]').first().textContent()).toBe(name2ndProductAdded);
+        expect(await page.locator('[data-test="inventory-item-price"]').first().textContent()).toBe(price2ndProductAdded);
     });
     
 });

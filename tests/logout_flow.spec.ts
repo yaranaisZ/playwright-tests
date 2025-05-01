@@ -8,6 +8,7 @@ const internalPages = [
 ];
 
 test.describe('Logout Flow', () => {
+
     test.beforeEach(async ({ page }) => {
         await page.goto('/');
         expect(await page.title()).toBe('Swag Labs');
@@ -28,7 +29,7 @@ test.describe('Logout Flow', () => {
             await page.locator('[data-test="logout-sidebar-link"]').click();
             expect(page.url()).toBe('https://www.saucedemo.com/');
             await page.waitForSelector('[data-test="login-button"]', { state: 'visible' });
-            expect(await page.getByRole('button', { name: 'Login' })).toBeVisible();
+            await expect(page.getByRole('button', { name: 'Login' })).toBeVisible();
             console.log(`Logout successfully from ${pagePath} page`);
         });
 
