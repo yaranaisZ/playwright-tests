@@ -29,11 +29,11 @@ This project contains automated tests to validate the main flows of the [Swag La
 
 Navigate to the main folder /Playwright-tests
 
-1. Run all tests
+1. Run all tests:
   npx playwright test
-2. Run a specific flow
+2. Run a specific flow:
   npx playwright test tests/<file_name>.spec.ts
-2. Run a specific test
+2. Run a specific test:
   npx playwright test tests/<file_name>.spec.ts -g "<test_name>"
-3. Run smoke test
+3. Run smoke test:
   npx playwright test --grep "\[smoke\]"
