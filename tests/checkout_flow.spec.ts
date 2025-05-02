@@ -122,7 +122,7 @@ test.describe('Checkout Flow', () => {
         await page.getByPlaceholder('Zip/Postal Code').fill('12345');
         await page.getByRole('button', { name: 'Continue' }).click();
         expect(page.url()).toContain('/checkout-step-two.html');
-        expect(page.locator('[data-test="title"]')).toHaveText('Checkout: Overview');
+        await expect(page.locator('[data-test="title"]')).toHaveText('Checkout: Overview');
     });
 
     test('Checkout flow step-two validations', async ({ page }) => {    

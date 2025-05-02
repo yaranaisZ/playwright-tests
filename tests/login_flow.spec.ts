@@ -30,7 +30,7 @@ test.describe('Login Flow', () => {
         await page.getByRole('button', { name: 'Login' }).click();
         const errorMessage = await page.locator('.error-message-container.error').textContent();
         expect(errorMessage).toContain(INVALID_CREDENTIALS_ERROR);
-        console.log('Error message text invalid credentials:', errorMessage);
+        console.log('Expected rrror message text invalid credentials:', errorMessage);
     });
 
     test ('Login with a valid user but invalid password', async ({ page }) => {
@@ -43,7 +43,7 @@ test.describe('Login Flow', () => {
         await page.getByRole('button', { name: 'Login' }).click();
         const errorMessage = await page.locator('.error-message-container.error').textContent();
         expect(errorMessage).toContain(INVALID_CREDENTIALS_ERROR);
-        console.log('Error message text invalid password:', errorMessage);
+        console.log('Expected error message text invalid password:', errorMessage);
     });
 
     test ('Login with a locked out user', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('Login Flow', () => {
         await page.getByRole('button', { name: 'Login' }).click();
         const errorMessage = await page.locator('.error-message-container.error').textContent();
         expect(errorMessage).toContain(LOCKED_OUT_USER_ERROR);
-        console.log('Error message login with a locked user:', errorMessage);
+        console.log('Expected error message login with a locked user:', errorMessage);
     });   
 
     test ('Login with empty credentials', async ({ page }) => {
@@ -73,7 +73,7 @@ test.describe('Login Flow', () => {
         errorMessageText = (await errorMessage.textContent()) ?? '';
         await expect(errorMessage).toBeVisible();
         expect(errorMessageText).toBe(EMPTY_CREDENTIALS_ERROR);
-        console.log('Error message text no credentials:', await errorMessage.textContent());
+        console.log('Expected error message text no credentials:', await errorMessage.textContent());
         await page.locator('.error-button').click();
         expect(errorMessage).toBeHidden();
 
@@ -83,7 +83,7 @@ test.describe('Login Flow', () => {
         errorMessageText = (await errorMessage.textContent()) ?? '';
         await expect(errorMessage).toBeVisible();
         expect(errorMessageText).toBe(EMPTY_PASSWORD_ERROR);
-        console.log('Error message text empty password:', await errorMessage.textContent());
+        console.log('Expected error message text empty password:', await errorMessage.textContent());
         await page.locator('.error-button').click();
         expect(errorMessage).toBeHidden();
 
@@ -94,6 +94,6 @@ test.describe('Login Flow', () => {
         await expect(errorMessage).toBeVisible();
         errorMessageText = (await errorMessage.textContent()) ?? '';
         expect(errorMessageText).toBe(EMPTY_CREDENTIALS_ERROR);
-        console.log('Error message text empty user:', await errorMessage.textContent());
+        console.log('Expected error message text empty user:', await errorMessage.textContent());
     });
 });
