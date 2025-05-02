@@ -17,7 +17,7 @@ test.describe('Login Flow', () => {
         expect(await page.title()).toBe('Swag Labs');
         const productsTitle = await page.getByText('Products').textContent();
         expect(productsTitle).toContain('Products');
-        expect(page.locator('button[name="Login"]')).toHaveCount(0);
+        await expect(page.locator('button[name="Login"]')).toHaveCount(0);
     });
 
     test ('[smoke] Login with invalid credentials', async ({ page }) => {

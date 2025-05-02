@@ -174,7 +174,7 @@ test.describe('Checkout Flow', () => {
         expect(page.url()).toContain('/checkout-step-two.html');
         await page.getByRole('button', { name: 'Finish' }).click();
         expect(page.url()).toContain('/checkout-complete.html');
-        expect(page.locator('[data-test="title"]')).toHaveText('Checkout: Complete!');
+        await expect(page.locator('[data-test="title"]')).toHaveText('Checkout: Complete!');
     });
 
     test('Checkout flow complete validations', async ({ page }) => {
@@ -198,8 +198,8 @@ test.describe('Checkout Flow', () => {
         expect(await page.locator('[data-test="back-to-products"]').textContent()).toContain('Back Home');
         await page.getByRole('button', { name: 'Back Home' }).click();
         expect(page.url()).toContain('/inventory.html');
-        expect(page.locator('[data-test="title"]')).toHaveText('Products');
-        expect(await page.locator('[data-test="shopping-cart-badge"]')).not.toBeVisible();
+        await expect(page.locator('[data-test="title"]')).toHaveText('Products');
+        await expect(page.locator('[data-test="shopping-cart-badge"]')).not.toBeVisible();
     });
 
     test('Checkout flow more than 1 item validations - Remove option', async ({ page }) => {
