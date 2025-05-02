@@ -44,7 +44,7 @@ test.describe('Logout Flow', () => {
             await page.goto(`${pagePath}`);
             const errorMessage = await page.locator('.error-message-container.error').textContent();
             expect(errorMessage).toContain(`Epic sadface: You can only access '${pagePath}' when you are logged in.`);
-            console.log('Error message login with a locked user:', errorMessage);
+            console.log('Expected error message login with a locked user:', errorMessage);
         });
     }
     

@@ -30,7 +30,7 @@ test.describe('Login Flow', () => {
         await page.getByRole('button', { name: 'Login' }).click();
         const errorMessage = await page.locator('.error-message-container.error').textContent();
         expect(errorMessage).toContain(INVALID_CREDENTIALS_ERROR);
-        console.log('Expected rrror message text invalid credentials:', errorMessage);
+        console.log('Expected error message text invalid credentials:', errorMessage);
     });
 
     test ('Login with a valid user but invalid password', async ({ page }) => {
